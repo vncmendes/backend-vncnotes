@@ -4,7 +4,9 @@ const notesRoutes = Router();
 const NotesController = require("../controllers/NoteController");
 const noteController = new NotesController();
 
-notesRoutes.post("/:user_id", noteController.create);
+const ensureAuth = require("../middlewares/ensureAuth");
+
+notesRoutes.post("/", ensureAuth, noteController.create);
 
 notesRoutes.get("/", noteController.index);
 notesRoutes.get("/:id", noteController.read);

@@ -14,14 +14,19 @@ class SessionsController {
     }
     
     const checkPassword = await compare(password, user.password);
-
+ 
     if (!checkPassword) {
       throw new appError("E-mail ou senha incorretos", 401);
     }
 
-    
+    const { secret, expiresIn } = authConfig.jwt;
+    const token = sign({}, secret, {
+      subject: String(user.id),
+      expiresIn
+    })
 
-    return res.json(user);
+    return res.json({user, token});
+
   }
 }
 

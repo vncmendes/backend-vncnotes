@@ -49,11 +49,11 @@ class UsersController {
   }
 
   async update(req, res) {
-    const { id } = req.params;
     const {name, email, password, old_password} = req.body;
+    const user_id = req.user.id;
 
     const database = await sqliteConnection();
-    const user = await database.get("SELECT * FROM users WHERE id = (?)", [id]);
+    const user = await database.get("SELECT * FROM users WHERE id = (?)", [user_id]);
 
     if (!user) {
       throw new appError("User is not registered on database!")
@@ -89,16 +89,16 @@ class UsersController {
         password = ?,
         updated_at = DATETIME('now') 
         WHERE id = ?`,
-        [user.name, user.email, user.password, id]
+        [user.name, user.email, user.password, user_id]
     );
     // updated_at = DATETIME('now') => function from database to set datetime; cuz JS have another default.
     return res.status(200).json();
   }
 
   async delete(req, res) {
-    const { id } = req.params
+    const user_id = req.user.id;
     const database = await sqliteConnection();
-    database.run("DELETE FROM users where id = (?)", [id]);
+    database.run("DELETE FROM users where id = (?)", [user_id]);
 
     return res.status(200).json("User Deleted!");
   }
