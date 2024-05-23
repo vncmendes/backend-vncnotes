@@ -1,9 +1,7 @@
 const { Router } = require("express");
-
-const TagsController = require("../controllers/TagsController");
-
 const tagsRoutes = Router();
 
+const TagsController = require("../controllers/TagsController");
 const tagController = new TagsController(); 
 
 tagsRoutes.get("/", tagController.read);
