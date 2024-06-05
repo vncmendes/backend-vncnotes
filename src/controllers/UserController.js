@@ -36,20 +36,21 @@ class UsersController {
 
   async read(req, res) {
     const { id } = req.query;
-    // let users = {};
+    
     const database = await sqliteConnection();
-    // const withQueryParams = await database.get("SELECT * FROM users");
+
     if (id) {
-      const users = await database.get("SELECT * FROM users WHERE id = (?)", [id]);
-      return res.status(200).json(users);
+      const user = await database.get("SELECT * FROM users WHERE id = (?)", [id]);
+      return res.status(200).json(user);
     }
 
     const users = await database.get("SELECT * FROM users");
+    console.log(users);
     return res.status(200).json(users);
   }
 
   async update(req, res) {
-    const {name, email, password, old_password} = req.body;
+    const { name, email, password, old_password } = req.body;
     const user_id = req.user.id;
 
     const database = await sqliteConnection();

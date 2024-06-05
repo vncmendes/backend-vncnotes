@@ -1,15 +1,20 @@
 const express = require("express");
 require ("express-async-errors"); // needed to work with async errors.
 const appError = require("./utils/appError.js");
-
+const uploadConfig = require("./config/upload");
 const routes = require("./routes/index.js");
 const migrationRun = require("./database/sqlite/migrations");
+const cors = require("cors");
 
 const server = express();
+
+server.use(cors());
 
 server.use(express.json()); // defines the method sended on request: JSON.
 
 server.use(routes); // call routes.
+
+server.use("/files", express.static(uploadConfig.UPLOADS_FOLDER));
 
 migrationRun();
 
