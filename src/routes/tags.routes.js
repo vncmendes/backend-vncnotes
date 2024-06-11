@@ -8,6 +8,6 @@ const tagController = new TagsController();
 tagsRoutes.use(ensureAuthentication);
 
 tagsRoutes.get("/", tagController.read);
-tagsRoutes.get("/", tagController.index);
+// tagsRoutes.get("/", tagController.index);
 
 module.exports = tagsRoutes;

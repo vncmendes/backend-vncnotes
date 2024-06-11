@@ -10,7 +10,7 @@ notesRoutes.use(ensureAuthentication);
 notesRoutes.post("/", noteController.create);
 
 notesRoutes.get("/", noteController.index);
-notesRoutes.get("/", noteController.read);
+// notesRoutes.get("/", noteController.read);
 
 notesRoutes.put("/:id", noteController.update);
 
