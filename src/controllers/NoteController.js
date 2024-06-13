@@ -68,13 +68,22 @@ class NoteController {
         .orderBy("title");
     }
 
+    let idNote;
+
+    notes.map(note => {
+      idNote = note.id;
+    })
+
+    const userLinks = await knex("links").where({ note_id: idNote });
+
     const userTags = await knex("tags").where({ user_id });
     const notesWithTags = notes.map(note => {
       const noteTags = userTags.filter(tag => tag.note_id === note.id);
 
       return {
         ...note,
-        tags: noteTags
+        tags: noteTags,
+        links: userLinks
       }
     });
 
