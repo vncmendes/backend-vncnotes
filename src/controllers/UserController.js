@@ -1,36 +1,18 @@
+const { hash, compare } = require("bcryptjs");
 const appError = require("../utils/appError.js");
 const sqliteConnection = require("../database/sqlite");
-const { hash, compare } = require("bcryptjs");
+const UserRepository = require("../repositories/User/UserRepository.js");
+const UserCreateService = require("../services/UserCreateService");
 
 class UsersController {
   async create(req, res) {
     const { name, email, password, auth } = req.body;
 
-    const user = {
-      name: name,
-      email: email,
-      password: password,
-      auth: auth
-    }
+    const userRepository = new UserRepository();
+    const userCreateService = new UserCreateService(userRepository);
+    await userCreateService.execute({ name, email, password, auth });
 
-    const database = await sqliteConnection();
-    const checkIfUserExists = await database.get("SELECT * FROM users where email = (?)", [email]);
-
-    console.log(user);
-
-    if (checkIfUserExists) {
-      throw new appError("User Already Exists!");
-    }
-
-    if (!name || !email || !password) {
-      throw new appError("All fields are required!");
-    }
-
-    const hashedPassword = await hash(password, 6);
-
-    await database.run("INSERT INTO users (name, email, password, auth) values (?,?,?,?)", [name, email, hashedPassword, auth]);
-
-    return res.status(201).json(user);
+    return res.status(201).json();
 
   }
 
