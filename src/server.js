@@ -35,7 +35,5 @@ server.use(( error, req, res, next) => {
   });
 });
 
-console.log("loading....");
-
 const PORT = process.env.PORT || 3333;
 server.listen(PORT, () => { console.log(`HTTP Server is Running on PORT: ${PORT}`) });
