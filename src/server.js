@@ -2,7 +2,7 @@ const express = require("express");
 require ("express-async-errors"); // needed to work with async errors.
 require("dotenv/config");
 const appError = require("./utils/appError.js");
-const uploadConfig = require("./config/upload");
+const uploadConfig = require("./config/upload.js");
 const routes = require("./routes/index.js");
 const migrationRun = require("./database/sqlite/migrations");
 const cors = require("cors");
@@ -35,6 +35,7 @@ server.use(( error, req, res, next) => {
   });
 });
 
+console.log("loading....");
 
 const PORT = process.env.PORT || 3333;
 server.listen(PORT, () => { console.log(`HTTP Server is Running on PORT: ${PORT}`) });

@@ -14,7 +14,9 @@ class TagsController {
     const user_id = req.user.id;
     const tags = await knex("tags")
     .where({ user_id })
-    .groupBy("name");
+    .groupBy("tags.id");
+    console.log(tags);
+    
   
     return res.json(tags);
   }

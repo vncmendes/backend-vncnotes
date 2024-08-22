@@ -7,10 +7,10 @@ class UserCreateService {
   }
 
   async execute({ name, email, password, auth}) {
-
     const checkIfUserExists = await this.userRepository.findByEmail(email);
-
-    if (checkIfUserExists) {
+    console.log(checkIfUserExists);
+    
+    if (checkIfUserExists.length !== 0) {
       throw new appError("User Already Exists!");
     }
 
