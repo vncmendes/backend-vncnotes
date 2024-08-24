@@ -5,9 +5,11 @@ module.exports = {
   development: {
     client: 'postgresql',
     connection: {
-      database: 'verceldb',
-      user:     'default',
-      password: 'KfX0md1yEvWa'
+      postgres_URL: 'postgres://default:KfX0md1yEvWa@ep-autumn-fire-a4xbe7yb-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require',
+      postgres_HOST: 'ep-autumn-fire-a4xbe7yb-pooler.us-east-1.aws.neon.tech',
+      postgres_DATABASE: 'postgres',
+      postgres_USER: 'default',
+      postgres_PASSWORD: 'KfX0md1yEvWa'
     },
     pool: {
       min: 2,
@@ -23,9 +25,11 @@ module.exports = {
   production: {
     client: 'postgresql',
     connection: {
-      database: 'verceldb',
-      user:     'default',
-      password: 'KfX0md1yEvWa'
+      postgres_URL: 'postgres://default:KfX0md1yEvWa@ep-autumn-fire-a4xbe7yb-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require',
+      postgres_HOST: 'ep-autumn-fire-a4xbe7yb-pooler.us-east-1.aws.neon.tech',
+      postgres_DATABASE: 'postgres',
+      postgres_USER: 'default',
+      postgres_PASSWORD: 'KfX0md1yEvWa'
     },
     pool: {
       min: 2,
@@ -38,23 +42,3 @@ module.exports = {
 
   useNullAsDefault: true
 };
-
-//configs
-// module.exports = {
-//   development: {
-//     client: 'sqlite3',
-//     connection: {
-//       filename: path.resolve(__dirname, "src", "database", "database.db")
-//     },
-
-//     pool: {
-//       afterCreate: (conn, cb) => conn.run("PRAGMA foreign_keys = 1", cb)
-//     },
-
-//     migrations: {
-//       directory: path.resolve(__dirname, "src", "database", "knex", "migrations")
-//     },
-    
-//     useNullAsDefault: true
-//   }
-// };
