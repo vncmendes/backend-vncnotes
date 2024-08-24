@@ -2,39 +2,39 @@ const path = require("path");
 
 //configs
 module.exports = {
-  development: {
-    client: 'postgresql',
-    connection: {
-      database: 'postgres',
-      user:     'postgres',
-      password: 'prodpw'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      directory: path.resolve(__dirname, "src", "database", "knex", "migrations")
-    },
+  // development: {
+  //   client: 'postgresql',
+  //   connection: {
+  //     database: 'postgres',
+  //     user:     'postgres',
+  //     password: 'prodpw'
+  //   },
+  //   pool: {
+  //     min: 2,
+  //     max: 10
+  //   },
+  //   migrations: {
+  //     directory: path.resolve(__dirname, "src", "database", "knex", "migrations")
+  //   },
 
-    useNullAsDefault: true
-  },
+  //   useNullAsDefault: true
+  // },
 
-  staging: {
-    client: 'postgresql',
-    connection: {
-      database: 'postgres',
-      user:     'postgres',
-      password: 'stagingpw'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      directory: path.resolve(__dirname, "src", "database", "knex", "migrations")
-    },
-  },
+  // staging: {
+  //   client: 'postgresql',
+  //   connection: {
+  //     database: 'postgres',
+  //     user:     'postgres',
+  //     password: 'stagingpw'
+  //   },
+  //   pool: {
+  //     min: 2,
+  //     max: 10
+  //   },
+  //   migrations: {
+  //     directory: path.resolve(__dirname, "src", "database", "knex", "migrations")
+  //   },
+  // },
 
   production: {
     client: 'postgresql',
