@@ -5,9 +5,9 @@ module.exports = {
   development: {
     client: 'postgresql',
     connection: {
-      database: 'postgres',
-      user:     'postgres',
-      password: 'prodpw'
+      database: 'verceldb',
+      user:     'default',
+      password: 'KfX0md1yEvWa'
     },
     pool: {
       min: 2,
@@ -20,28 +20,12 @@ module.exports = {
     useNullAsDefault: true
   },
 
-  staging: {
-    client: 'postgresql',
-    connection: {
-      database: 'postgres',
-      user:     'postgres',
-      password: 'stagingpw'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      directory: path.resolve(__dirname, "src", "database", "knex", "migrations")
-    },
-  },
-
   production: {
     client: 'postgresql',
     connection: {
-      database: 'postgres',
-      user:     'postgres',
-      password: 'prodpw'
+      database: 'verceldb',
+      user:     'default',
+      password: 'KfX0md1yEvWa'
     },
     pool: {
       min: 2,
