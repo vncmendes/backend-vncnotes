@@ -2,6 +2,24 @@ const path = require("path");
 
 //configs
 module.exports = {
+  production: {
+    client: 'postgresql',
+    connection: {
+      database: 'postgres',
+      user:     'postgres',
+      password: 'prodpw'
+    },
+    pool: {
+      min: 2,
+      max: 10
+    },
+    migrations: {
+      directory: path.resolve(__dirname, "src", "database", "knex", "migrations")
+    },
+  },
+
+  useNullAsDefault: true
+  
   // development: {
   //   client: 'postgresql',
   //   connection: {
@@ -36,23 +54,6 @@ module.exports = {
   //   },
   // },
 
-  production: {
-    client: 'postgresql',
-    connection: {
-      database: 'postgres',
-      user:     'postgres',
-      password: 'prodpw'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      directory: path.resolve(__dirname, "src", "database", "knex", "migrations")
-    },
-  },
-
-  useNullAsDefault: true
 };
 
 //configs
