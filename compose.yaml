@@ -1,7 +1,15 @@
 services:
+  app:
+    build: .
+    environment:
+      - DATABASE_URL=postgres://default:KfX0md1yEvWa@ep-autumn-fire-a4xbe7yb-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require
+    depends_on:
+      - database
+
   database:
     image: "postgres:16.0-alpine3.18"
     environment:
+      POSTGRES_USER: "default"
       POSTGRES_PASSWORD: "prodpw"
     ports:
       - "5432:5432"
