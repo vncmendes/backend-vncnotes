@@ -9,7 +9,8 @@
     "migrateUP": "knex migrate:latest",
     "migrateDOWN": "knex migrate:rollback",
     "dev-node": "node --watch ./src/server.js",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "vercel-build": "npx knex migrate:latest"
   },
   "keywords": [],
   "author": "",
